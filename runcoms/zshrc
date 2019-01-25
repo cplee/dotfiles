@@ -11,3 +11,17 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status aws root_indicator background_jobs history time)
+DEFAULT_USER=$USER
+
+function agp {
+  echo $AWS_DEFAULT_PROFILE
+}
+
+function asp {
+  export AWS_DEFAULT_PROFILE=$1
+  export AWS_PROFILE=$1
+  export AWS_EB_PROFILE=$1
+}

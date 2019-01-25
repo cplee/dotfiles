@@ -1,0 +1,20 @@
+cask_args appdir: "/Applications"
+tap "homebrew/cask"
+cask "google-chrome"
+cask "virtualbox"
+cask "docker"
+cask "iterm2"
+cask "visual-studio-code"
+cask "marshallofsound-google-play-music-player"
+cask "keybase"
+brew "gpg"
+brew "tmux"
+brew "awscli"
+brew "vim", args: ["with-override-system-vi","with-lua"]
+
+tap "caskroom/fonts"
+cask "font-hack-nerd-font-mono"
+cask "font-hack-nerd-font"
+
+tap "nektos/tap"
+brew "act"

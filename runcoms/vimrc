@@ -1,0 +1,84 @@
+if !isdirectory(expand("~/.vim/bundle/Vundle.vim"))
+    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+endif
+
+"set clipboard=unnamed
+set t_Co=256
+
+set paste
+set nocompatible
+set noai
+set softtabstop=2
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set showmatch
+set ignorecase
+set background=dark
+set hlsearch
+set incsearch
+set number
+syntax on
+
+filetype plugin indent on
+
+"execute pathogen#infect()
+
+"autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+"autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+"autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+
+" for js
+autocmd FileType json noremap <buffer>  <c-f> :call JsBeautify()
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'elzr/vim-json'
+Plugin 'avakhov/vim-yaml'
+Plugin 'maksimr/vim-jsbeautify'
+" Plugin 'vim-airline/vim-airline'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'scrooloose/nerdtree'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+"""""""""""""""""
+"  vim-airline  "
+"""""""""""""""""
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme = "bubblegum"
+
+
+map <C-n> :NERDTreeToggle<CR>

@@ -1,0 +1,12 @@
+[user]
+	name = Casey Lee
+	email = cplee@nektos.com
+[core]
+	autocrlf = false
+	excludesfile = /Users/casey.lee/.gitignore_global
+[color]
+	ui = true
+[push]
+	default = simple
+[url "https://github"]
+	insteadOf = git://github
