@@ -1,4 +1,5 @@
 *.zwc
 *.zwc.old
 modules/*/cache.zsh
+*.swp
 contrib

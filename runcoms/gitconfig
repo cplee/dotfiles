@@ -1,6 +1,7 @@
 [user]
 	name = Casey Lee
 	email = cplee@nektos.com
+	signingkey = D8350B18CA45C051AB255A512F11DA0A41A45456
 [core]
 	autocrlf = false
 	excludesfile = /Users/casey.lee/.gitignore_global
@@ -10,3 +11,7 @@
 	default = simple
 [url "https://github"]
 	insteadOf = git://github
+[commit]
+	gpgsign = true
+[includeIf "gitdir:~/work/"]
+  path = ~/work/.gitconfig
