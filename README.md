@@ -23,6 +23,8 @@ Vundle is configured as a git submodule under `runcoms/vim/bundle`.  The `vimrc`
 vim +PluginInstall +qall
 ```
 
+### Yubikey
+[Setup](https://ttmm.io/tech/yubikey/)
 
 ### Troubleshooting
 
