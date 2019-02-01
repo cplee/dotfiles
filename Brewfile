@@ -15,6 +15,8 @@ brew "python"
 brew "vim", args: ["with-override-system-vi","with-lua"]
 brew "awscli"
 brew "pinentry-mac"
+brew "go"
+brew "node"
 
 tap "caskroom/fonts"
 cask "font-hack-nerd-font-mono"

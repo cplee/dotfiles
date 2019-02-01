@@ -15,3 +15,5 @@
 	gpgsign = true
 [includeIf "gitdir:~/work/"]
   path = ~/work/.gitconfig
+[url "ssh://git@github.com/actions/"]
+  insteadOf = https://github.com/actions/
