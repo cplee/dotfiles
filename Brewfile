@@ -17,7 +17,11 @@ brew "awscli"
 brew "pinentry-mac"
 brew "go"
 brew "node"
+
 brew "kubernetes-helm"
+
+cask "java"
+brew "maven"
 
 tap "caskroom/fonts"
 cask "font-hack-nerd-font-mono"
