@@ -16,6 +16,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status aws root_indicator background_jobs history time)
 DEFAULT_USER=$USER
 
+## AWS
 function agp {
   echo $AWS_DEFAULT_PROFILE
 }
@@ -25,9 +26,23 @@ function asp {
   export AWS_PROFILE=$1
   export AWS_EB_PROFILE=$1
 }
+if [ $commands[aws] ]; then
+  source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+fi
 
 ## GPG
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 #gpgconf --launch gpg-agent
 gpg-connect-agent updatestartuptty /bye
+
+## Kubectl
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+  alias k='kubectl'
+fi
+
+## JX
+if [ $commands[jx] ]; then
+  source <(jx completion zsh)
+fi
