@@ -12,7 +12,7 @@ Prezto will work with any recent release of Zsh, but the minimum required
 version is 4.3.11.
 
 ```
-zsh -c "$(curl -fsSL https://raw.githubusercontent.com/cplee/dotfiles/master/install.zsh)"
+zsh -c "$(curl -fsSL https://raw.githubusercontent.com/cplee/dotfiles/master/install.sh)"
 ```
 
 Vundle
