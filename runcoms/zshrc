@@ -82,7 +82,3 @@ export AWS_VAULT_PROMPT=osascript
 export AWS_VAULT_KEYCHAIN_NAME=login
 
 export GITHUB_TOKEN=$(cat ~/.config/github/token)
-
-### VAULT
-export VAULT_ADDR=https://vault.internal.services.liatr.io
-export VAULT_TOKEN=$(cat ~/.config/vault/token)
