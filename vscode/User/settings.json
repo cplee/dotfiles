@@ -2,5 +2,28 @@
     "terminal.integrated.shell.linux": "/bin/zsh",
     "terminal.integrated.shell.osx": "/bin/zsh",
     "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "window.zoomLevel": 0,
+    "vim.useSystemClipboard": true,
+    "terminal.integrated.copyOnSelection": true,
+    "editor.tabSize": 2,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "pasteImage.basePath": "${currentFileDir}/",
+    "pasteImage.path": "${projectRoot}/img",
+    "pasteImage.showFilePathConfirmInputBox": true,
+    "files.insertFinalNewline": true,
+    "go.formatTool": "goimports",
+    "editor.minimap.enabled": true,
+    "aws.samcli.location": "/usr/local/bin/sam",
+    "go.inferGopath": true,
+    "go.gotoSymbol.includeGoroot": true,
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }

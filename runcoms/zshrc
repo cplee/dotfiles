@@ -13,7 +13,7 @@ fi
 # Customize to your needs...
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status aws root_indicator background_jobs history time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status kubecontext aws root_indicator background_jobs history time)
 DEFAULT_USER=$USER
 
 ## AWS
@@ -22,12 +22,14 @@ function agp {
 }
 
 function asp {
+  export AWS_SDK_LOAD_CONFIG=1
   export AWS_DEFAULT_PROFILE=$1
   export AWS_PROFILE=$1
   export AWS_EB_PROFILE=$1
 }
 if [ $commands[aws] ]; then
-  source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+  autoload bashcompinit && bashcompinit
+  complete -C '/usr/local/bin/aws_completer' aws
 fi
 
 ## GPG
@@ -40,9 +42,47 @@ gpg-connect-agent updatestartuptty /bye
 if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
   alias k='kubectl'
+
+  alias kba='kubectl apply'
+  alias kbc='kubectl config'
+  alias kbg='kubectl config get-contexts'
+  alias kbu='kubectl config use-context'
+  alias kbcv='kubectl config view'
+  alias kbC='kubectl create'
+  alias kbD='kubectl delete'
+  alias kbd='kubectl describe'
+  alias kbe='kubectl exec'
+  alias kbf='kubectl port-forward'
+  alias kbg='kubectl get'
+  alias kbl='kubectl logs'
+  alias kblf='kubectl logs --follow'
+  alias kbr='kubectl run'
+
+  alias wkb='watch -n 1 kubectl'
+
+  kbn () {
+    kubectl config set-context $(kubectl config current-context) --namespace=$1
+  }
+
+fi
+
+## Helm
+if [ $commands[helm] ]; then
+  source <(helm completion zsh)
+  alias helmn='helm --tiller-namespace=$(kubectl get sa default -o jsonpath="{.metadata.namespace}")'
 fi
 
 ## JX
 if [ $commands[jx] ]; then
   source <(jx completion zsh)
 fi
+
+### AWS_VAULT
+export AWS_VAULT_PROMPT=osascript
+export AWS_VAULT_KEYCHAIN_NAME=login
+
+export GITHUB_TOKEN=$(cat ~/.config/github/token)
+
+### VAULT
+export VAULT_ADDR=https://vault.internal.services.liatr.io
+export VAULT_TOKEN=$(cat ~/.config/vault/token)

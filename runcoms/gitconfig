@@ -5,6 +5,7 @@
 [core]
 	autocrlf = false
 	excludesfile = /Users/casey.lee/.gitignore_global
+  editor = vim 
 [color]
 	ui = true
 [push]
@@ -17,3 +18,6 @@
   path = ~/work/.gitconfig
 [url "ssh://git@github.com/actions/"]
   insteadOf = https://github.com/actions/
+[credential]
+	helper = !aws codecommit credential-helper $@
+	UseHttpPath = true
