@@ -13,7 +13,7 @@ ${ZDOTDIR:-$HOME}/.zprezto/link.sh
 case `uname` in 
   'Darwin')
     brew -v || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew bundle ${ZDOTDIR:-$HOME}/.zprezto/Brewfile
+    brew bundle --file ${ZDOTDIR:-$HOME}/.zprezto/Brewfile
     ;;
   *)
     ;;
