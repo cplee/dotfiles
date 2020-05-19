@@ -22,7 +22,6 @@
     "files.insertFinalNewline": true,
     "go.formatTool": "goimports",
     "editor.minimap.enabled": true,
-    "aws.samcli.location": "/usr/local/bin/sam",
     "go.inferGopath": true,
     "go.gotoSymbol.includeGoroot": true,
     "javascript.updateImportsOnFileMove.enabled": "always"
