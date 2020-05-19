@@ -4,7 +4,7 @@
 	signingkey = D8350B18CA45C051AB255A512F11DA0A41A45456
 [core]
 	autocrlf = false
-	excludesfile = /Users/casey.lee/.gitignore_global
+	excludesfile = /Users/casey/.gitignore_global
   editor = vim 
 [color]
 	ui = true
