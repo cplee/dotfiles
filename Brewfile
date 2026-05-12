@@ -1,0 +1,10 @@
+cask "ghostty"
+cask "zed"
+cask "spotify"
+cask "font-hack-nerd-font"
+
+brew "yazi"
+brew "mise"
+brew "starship"
+brew "chezmoi"
+brew "gh"

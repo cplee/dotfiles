@@ -1,0 +1,12 @@
+# Files that live in the repo but are NOT dotfiles to install into $HOME.
+# chezmoi only manages files prefixed with dot_/private_/etc. — but any other
+# file at the source root would still be copied verbatim. Block those here.
+
+Brewfile
+CLAUDE.md
+README.md
+LICENSE
+
+# Repo infrastructure
+.claude
+.claude/**
