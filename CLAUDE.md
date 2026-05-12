@@ -10,9 +10,10 @@ Tooling to set up and manage MacBook workstations — installing apps via Homebr
 
 ```
 Brewfile                          Homebrew bundle (apps + CLIs + chezmoi + gh + font)
+bin/bootstrap.sh                  Fresh-Mac bootstrap (Xcode CLT → brew → clone → bundle → chezmoi)
 dot_gitconfig                     → ~/.gitconfig    (git SSH signing via 1Password)
 dot_zshrc                         → ~/.zshrc
-.chezmoiignore                    Excludes Brewfile / CLAUDE.md / .claude from $HOME install
+.chezmoiignore                    Excludes Brewfile / CLAUDE.md / bin / .claude from $HOME install
 .claude/skills/sync-dotfiles/     Skill that wraps the chezmoi workflow
 ```
 
@@ -59,13 +60,33 @@ Keep entries grouped by type (casks block, then brews block).
 
 ## Bootstrapping a fresh Mac
 
-Rough sequence (not yet captured as a script):
+[bin/bootstrap.sh](bin/bootstrap.sh) handles the end-to-end setup. From a clean macOS install:
 
-1. Install Homebrew (one-liner from brew.sh).
-2. Clone this repo to `~/workspaces/dotfiles`.
-3. `brew bundle --file=~/workspaces/dotfiles/Brewfile` — installs chezmoi, gh, font, the rest.
-4. Write `~/.config/chezmoi/chezmoi.toml` with `sourceDir = "..."` pointing at the clone.
-5. `chezmoi apply` to install dotfiles.
-6. `gh auth login` if working with GitHub.
+```bash
+curl -fsSL https://raw.githubusercontent.com/cplee/dotfiles/main/bin/bootstrap.sh | bash
+```
 
-If/when this grows large enough, the bootstrap belongs in its own `bin/bootstrap.sh`.
+Or, if the repo is already cloned:
+
+```bash
+./bin/bootstrap.sh
+```
+
+The script is idempotent and runs these phases, each guarded against re-run:
+
+1. Install Xcode Command Line Tools (GUI prompt) — skipped if `xcode-select -p` already returns a path.
+2. Install Homebrew via the official non-interactive installer — skipped if `brew` is in PATH; `eval brew shellenv` makes it visible to the rest of the script.
+3. Clone this repo via HTTPS into `~/workspaces/dotfiles` — skipped if `.git/` already exists (the script does NOT pull; do that yourself).
+4. `brew bundle --file=Brewfile` to install the rest.
+5. Write `~/.config/chezmoi/chezmoi.toml` with `sourceDir = "..."` — leaves an existing correct config alone, otherwise backs up to `.bak.<ts>` before writing.
+6. `chezmoi apply --verbose` to install the dotfiles.
+
+It stops short of interactive steps. After it finishes the script prints follow-ups:
+- Toggle 1Password's SSH agent in Settings → Developer.
+- `gh auth login` for the GitHub CLI.
+- Switch the repo's remote from HTTPS (used for the initial clone) to `git@github.com:cplee/dotfiles.git` so pushes use the 1Password agent.
+- Restart the terminal so the new shell picks up starship.
+
+Two env vars override paths if you fork:
+- `DOTFILES_REPO_URL` (default: `https://github.com/cplee/dotfiles.git`)
+- `DOTFILES_REPO_DIR` (default: `$HOME/workspaces/dotfiles`)

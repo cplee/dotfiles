@@ -10,3 +10,5 @@ LICENSE
 # Repo infrastructure
 .claude
 .claude/**
+bin
+bin/**

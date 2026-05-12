@@ -38,5 +38,5 @@ When the user wants to add a new file (e.g. `~/.config/ghostty/config`):
 ## Out of scope
 
 - Installing Homebrew packages — that's `brew bundle --file=Brewfile` at repo root.
-- Mac bootstrap from zero (Xcode CLT, Homebrew install, writing `~/.config/chezmoi/chezmoi.toml`). When that script lands, it'll be at `bin/bootstrap.sh` — don't improvise one inside this skill.
+- Mac bootstrap from zero (Xcode CLT, Homebrew install, repo clone, chezmoi config). That's `bin/bootstrap.sh` — point users at that script rather than running its individual pieces yourself.
 - Switching to a different dotfiles tool (stow, nix-darwin, etc.). That's an architectural decision, not a sync task.
