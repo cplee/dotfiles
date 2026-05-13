@@ -1,6 +1,7 @@
 cask "ghostty"
 cask "zed"
 cask "spotify"
+cask "slack"
 cask "font-hack-nerd-font"
 
 brew "yazi"
