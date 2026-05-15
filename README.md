@@ -30,6 +30,7 @@ After it finishes, four manual follow-ups:
 | `dot_zshrc` → `~/.zshrc` | starship prompt init |
 | `.chezmoiignore` | Repo-infra files excluded from `$HOME` install |
 | [`CLAUDE.md`](CLAUDE.md) | Guidance for Claude Code sessions |
+| [`docs/`](docs/) | Per-topic setup runbooks (e.g. [yubikey-setup.md](docs/yubikey-setup.md)) |
 
 chezmoi's source directory is this repo (`~/workspaces/dotfiles`), wired up via `~/.config/chezmoi/chezmoi.toml`:
 

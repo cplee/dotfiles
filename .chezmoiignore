@@ -6,6 +6,8 @@ Brewfile
 CLAUDE.md
 README.md
 LICENSE
+docs
+docs/**
 
 # Repo infrastructure
 .claude
